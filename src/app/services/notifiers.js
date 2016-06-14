@@ -1,27 +1,28 @@
+import { ConfigurationError, UncaughtError, NotImplementedError, ValidationError } from '../../core/errors';
 import ContextService from '../../core/class/service-context';
-import { paths as pathsConfig } from '../config/parameters';
-import { UncaughtError, ConfigurationError, NotImplementedError, ValidationError } from '../../core/errors';
+import { EmailTemplate } from 'email-templates';
+import fs from 'fs';
 import loggerFactory from '../../core/factory/logger';
 import nodemailer from 'nodemailer';
 import path from 'path';
-import { EmailTemplate } from 'email-templates';
+import { paths as pathsConfig } from '../config/parameters';
 
+const nofitierConfigFilepath = path.resolve(__dirname, '../../../notifier-config.json');
 if (!pathsConfig || !pathsConfig.templates) {
   throw new ConfigurationError('Missing configuration: template path config for emails');
 }
 
 module.exports = class NotifiersService extends ContextService {
-
   constructor() {
     super();
     this.config = null;
   }
 
   getConfig() {
-    // Allow hot config modification
     if (this.config == null) {
       try {
-        this.config = require(path.resolve(__dirname, '../../../notifier-config.json'));
+        // By reading file, it allows hot config modification without restarting the server
+        this.config = JSON.parse(fs.readFileSync(nofitierConfigFilepath, 'utf8'));
       } catch(err) {
         this.logger.error('Unable to load the json notifier configuration', err);
         throw new ConfigurationError('Unable to load the json notifier configuration');
