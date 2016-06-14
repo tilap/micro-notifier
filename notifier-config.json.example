@@ -1,0 +1,34 @@
+{
+  "john@doe.com": {
+    "events": {
+      "users:created": [{
+        "type": "mail",
+        "transporter": "gmail",
+        "options": {
+          "from": "'My app' <app@gmail.com>",
+          "subject": "Welcome on board!"
+        },
+        "template": {
+          "name": "welcome",
+          "data": {
+            "subject": "Welcome on board!",
+            "summary": "Please confirm your email"
+          }
+        }
+      }]
+    },
+    "transporters": {
+      "gmail": {
+        "transport": null,
+        "options": {
+          "host": "smtp.gmail.com",
+          "port": 465,
+          "auth": {
+            "user": "john@gmail.com",
+            "pass": "password"
+          }
+        }
+      }
+    }
+  }
+}

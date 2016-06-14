@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "email": "julien@gmail.com",
+    "password": "mypassword",
+    "profile": "admin",
+    "validated_at": "2010-01-05",
+    "apikey": "AIzaSyCcjJUjQgFfXoS9JfZxp80spzg7RoOD-Tg"
+  }, {
+    "id": 2,
+    "email": "julien.validated@gmail.com",
+    "password": "mypassword.validated",
+    "profile": "user",
+    "validated_at": "2010-01-05",
+    "apikey": "bbb"
+  }, {
+    "id": 3,
+    "email": "julien.notvalidated@gmail.com",
+    "password": "mypassword.notvalidated",
+    "profile": "user",
+    "validated_at": null,
+    "apikey": "aaa"
+  }, {
+    "id": 4,
+    "email": "julien.labda@gmail.com",
+    "password": "mypassword.lambda",
+    "profile": "user",
+    "validated_at": null,
+    "apikey": "aaa"
+  }
+]
+

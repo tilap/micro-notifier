@@ -1,0 +1,22 @@
+{
+  "apps" : [{
+    "name"              : "my-api",
+    "cwd"               : "./",
+    "exec_interpreter"  : "./node_modules/.bin/babel-node",
+    "script"            : "src/app/index.js",
+    "watch"             : false,
+    "max_memory_restart": "60M",
+    "autorestart"       : true,
+    "max_restarts"      : 10,
+    "restart_delay"     : 100,
+    "merge_logs"        : true,
+    "env": {
+      "NODE_ENV"      : "development",
+      "PORT"          : 3000,
+      "WEB_URL"       : "http://localhost:3000",
+      "LOG_PATH"      : "./tmp",
+      "DATABASES_MAIN": "mongodb://localhost:27272/my-appli",
+      "TOKEN_SECRET"  : "dev-token"
+    }
+  }]
+}
